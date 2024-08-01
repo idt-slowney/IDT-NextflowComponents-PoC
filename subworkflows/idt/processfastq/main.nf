@@ -1,6 +1,6 @@
 include { FASTQC as PreprocessFASTQC }  from '../../../modules/idt/fastqc/main'
 include { SEQTK_SAMPLE }                from '../../../modules/idt/seqtk/sample/main'
-include { CUTADAPT_EXTRACTUMI }         from '/mnt/archive/work/slowney/IDT-Nextflow/modules/IDT/cutadapt/extractumi/main'
+include { CUTADAPT_EXTRACTUMI }         from '../../../modules/idt/cutadapt/extractumi/main'
 include { TRIMGALORE }                  from '../../../modules/idt/trimgalore/main'
 include { FASTQC as PostprocessFASTQC } from '../../../modules/idt/fastqc/main'
 
@@ -83,7 +83,6 @@ workflow PROCESSFASTQ {
     fastqc_zip = fastqc_zip.mix(PostprocessFASTQC.out.zip)
 
     emit:
-    // TODO idt: edit emitted channels
     reads               = trim_reads           // channel: [ val(meta), [ reads ] ]
     fastqc_html         = fastqc_html          // channel: [ val(meta), path(html) ]
     fastqc_zip          = fastqc_zip           // channel: [ val(meta), path(zip) ]
