@@ -1,4 +1,4 @@
-process EXTRACT_UMI {
+process CUTADAPT_EXTRACTUMI {
     conda "${moduleDir}/environment.yml"
 
     input:

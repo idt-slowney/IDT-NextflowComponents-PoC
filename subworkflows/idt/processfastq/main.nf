@@ -35,7 +35,7 @@ workflow PROCESSFASTQ {
     // or set one downsampling level as a parameter for all samples - this will probably impact the conditional
     sample_reads = reads
     if (!skip_downsample) {
-        downsample_reads = Channel.of(sample_reads).branch{
+        downsample_reads = sample_reads.branch{
                     Sample: it[0]["sample_size"] && it[0]["sample_size"] != null
                     No_Sample: it[0]["sample_size"] == null | !("sample_size" in it[0]) }
                     

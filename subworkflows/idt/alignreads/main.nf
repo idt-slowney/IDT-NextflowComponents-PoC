@@ -1,7 +1,7 @@
 include { BWAMEM2_MEM }                                 from '../../../modules/nf-core/bwamem2/mem/main'
 include { SENTIEON_BWAMEM }                             from '../../../modules/nf-core/bwamem2/mem/main'
 include { PICARD_SORTSAM as PRE_SORTSAM }               from '../../../modules/nf-core/picard/sortsam/main'
-include { PICARD_SORTSAM as SORT_CONSENSUS }            from '../../../modules/nf-core/picard/sortsam/main'
+include { PICARD_MARKDUPLICATES }                       from '../../../modules/nf-core/picard/markduplicates/main'
 
 workflow AlignReads {
     take:
@@ -9,7 +9,7 @@ workflow AlignReads {
     fasta                   // channel: [mandatory] [meta, fasta]
     index                   // path: bwamem2/*
     sort_bam                // bool: [mandatory] true -> sort, false -> don't sort
-    aligner
+    aligner                 // str: "bwa2" or "sentieon-bwamem"
 
     main:
     // Initialize output channels

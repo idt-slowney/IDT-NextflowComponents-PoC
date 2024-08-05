@@ -1,6 +1,5 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
 name: "prepreferencegenome"
-## TODO nf-core: Add a description of the subworkflow and list keywords
 description: Prepare genome files
 keywords:
   - index
@@ -8,13 +7,11 @@ keywords:
   - fai
   - dict
   - fasta
-## TODO nf-core: Add a list of the modules and/or subworkflows used in the subworkflow
 components:
   - bwamem2/index
   - samtools/faidx
   - picard/createsequencedictionary
   - sentieon/bwaindex
-## TODO nf-core: List all of the channels used as input with a description and their structure
 input:
   - fasta:
       type: file
@@ -22,26 +19,23 @@ input:
         The input fasta file
         Structure: [ fasta ]
       pattern: "*.{fasta/fa}"
-## TODO nf-core: List all of the channels used as output with a descriptions and their structure
 output:
-  - bam:
+  - bwa:
       type: file
-      description: |
-        Channel containing BAM files
-        Structure: [ val(meta), path(bam) ]
-      pattern: "*.bam"
-  - bai:
+      description: BWA genome index files
+      pattern: "Directory containing BWA index *.{0132,amb,ann,pac}"
+  - bwamem2:
       type: file
-      description: |
-        Channel containing indexed BAM (BAI) files
-        Structure: [ val(meta), path(bai) ]
-      pattern: "*.bai"
-  - csi:
+      description: BWA2 genome index files
+      pattern: "Directory containing BWA index *.{0132,amb,ann,bwt.2bit.64,pac}"
+  - fasta_fai:
       type: file
-      description: |
-        Channel containing CSI files
-        Structure: [ val(meta), path(csi) ]
-      pattern: "*.csi"
+      description: FASTA index file
+      pattern: "*.fai"
+    - fasta_dict:
+      type: file
+      description: FASTA dictionary file
+      pattern: "*.dict"
   - versions:
       type: file
       description: |
