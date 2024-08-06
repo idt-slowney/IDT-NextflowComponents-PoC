@@ -39,6 +39,12 @@ process BWAMEM2_MEM {
     """
     INDEX=`find -L ./ -name "*.amb" | sed 's/\\.amb\$//'`
 
+    ID=ID:${meta.id}
+    SM=SM:${meta.id}
+    LB=LB:${meta.id}
+    PL=PL:${meta.id}
+    PU=PU:${meta.id}
+
     bwa-mem2 \\
         mem \\
         $args \\
