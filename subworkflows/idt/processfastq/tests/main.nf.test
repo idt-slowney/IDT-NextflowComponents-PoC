@@ -27,7 +27,7 @@ nextflow_workflow {
                 umi_flag           = false
                 skip_extractumi    = true
                 read_structure     = "8M143T 8M143T"
-                skip_trimming      = true
+                skip_trimming      = false
 
                 // TODO nf-core: define inputs of the workflow here. Example:
                 input[0] = Channel.of([
