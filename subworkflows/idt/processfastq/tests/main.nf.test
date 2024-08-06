@@ -48,9 +48,17 @@ nextflow_workflow {
 
         then {
             assertAll(
-                { assert workflow.success},
-                { assert snapshot(workflow.out).match()}
-                //TODO nf-core: Add all required assertions to verify the test output.
+                { assert workflow.success },
+                { assert workflow.out.fastqc_html },
+                { assert workflow.out.fastqc_zip },
+                { assert workflow.out.trimgalore_unpaired },
+                { assert workflow.out.trimgalore_html },
+                { assert workflow.out.trimgalore_zip },
+                { assert snapshot(
+                        workflow.out.reads,
+                        workflow.out.versions
+                    ).match()
+                }
             )
         }
     }
