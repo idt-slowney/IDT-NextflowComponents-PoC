@@ -1,0 +1,27 @@
+{
+    "homo_sapiens - fastq - paired_end": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false,
+                        "sample_size": 5000
+                    },
+                    [
+                        "/nf-core/test-datasets/modules/data/genomics/homo_sapiens/illumina/fastq/test_1.fastq.gz",
+                        "/nf-core/test-datasets/modules/data/genomics/homo_sapiens/illumina/fastq/test_2.fastq.gz"
+                    ]
+                ]
+            ],
+            [
+                "versions.yml:md5,7b9f999b76de4a7d95267dfd2d9ddec0"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-08-06T10:28:36.852616387"
+    }
+}
