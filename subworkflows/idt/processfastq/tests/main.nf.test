@@ -31,11 +31,12 @@ nextflow_workflow {
 
                 // TODO nf-core: define inputs of the workflow here. Example:
                 input[0] = Channel.of([
-                            [ id:'test', single_end:false, sample_size:10000 ],
-                            [ file(params.test_data['homo_sapiens']['illumina']['test_1_fastq_gz'], checkIfExists: true),
-                              file(params.test_data['homo_sapiens']['illumina']['test_2_fastq_gz'], checkIfExists: true)
-                            ]
-                        ])
+                    [ id:'test', single_end:false, sample_size:10000 ], // meta map
+                    [
+                        file(params.test_data['homo_sapiens']['illumina']['test_1_fastq_gz'], checkIfExists: true),
+                        file(params.test_data['homo_sapiens']['illumina']['test_2_fastq_gz'], checkIfExists: true)
+                    ]
+                ])
                 input[1] = skip_fastqc
                 input[2] = skip_downsample
                 input[3] = umi_flag
