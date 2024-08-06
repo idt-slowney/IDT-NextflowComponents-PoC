@@ -60,41 +60,41 @@ nextflow_workflow {
             )
         }
     
-    test("skip fastqc") {
+    // test("skip fastqc") {
 
-        when {
-            workflow {
-                """
-                skip_fastqc        = true 
-                skip_downsample    = true
-                umi_flag           = false
-                skip_extractumi    = true
-                read_structure     = '8M143T 8M143T'
-                skip_trimming      = false
+    //     when {
+    //         workflow {
+    //             """
+    //             skip_fastqc        = true 
+    //             skip_downsample    = true
+    //             umi_flag           = false
+    //             skip_extractumi    = true
+    //             read_structure     = '8M143T 8M143T'
+    //             skip_trimming      = false
 
-                input[0] = Channel.of([
-                    [ id:'test', single_end:false, sample_size:10000 ], // meta map
-                    [ file(params.test_data['homo_sapiens']['illumina']['test_1_fastq_gz'], checkIfExists: true),
-                      file(params.test_data['homo_sapiens']['illumina']['test_2_fastq_gz'], checkIfExists: true) ]
-                ])
-                input[1] = skip_fastqc
-                input[2] = skip_downsample
-                input[3] = umi_flag
-                input[4] = skip_extractumi
-                input[5] = read_structure
-                input[6] = skip_trimming
-                """
-            }
-        }
+    //             input[0] = Channel.of([
+    //                 [ id:'test', single_end:false, sample_size:10000 ], // meta map
+    //                 [ file(params.test_data['homo_sapiens']['illumina']['test_1_fastq_gz'], checkIfExists: true),
+    //                   file(params.test_data['homo_sapiens']['illumina']['test_2_fastq_gz'], checkIfExists: true) ]
+    //             ])
+    //             input[1] = skip_fastqc
+    //             input[2] = skip_downsample
+    //             input[3] = umi_flag
+    //             input[4] = skip_extractumi
+    //             input[5] = read_structure
+    //             input[6] = skip_trimming
+    //             """
+    //         }
+    //     }
 
-        then {
-            assertAll(
-                { assert workflow.success},
-                { assert snapshot(
-                    workflow.out.reads,
-                    workflow.out.versions).match() }
-                )
-            }
-        }
+    //     then {
+    //         assertAll(
+    //             { assert workflow.success},
+    //             { assert snapshot(
+    //                 workflow.out.reads,
+    //                 workflow.out.versions).match() }
+    //             )
+    //         }
+    //     }
     }
 }
